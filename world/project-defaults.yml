@@ -3,9 +3,9 @@ swarm:
     data-sources:
       WorldDS:
         driver-name: myh2
-        connection-url: jdbc:h2:file:/home/wsiqueir/projects/dashbuilder-data/world/world_data;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-        user-name: sa
-        password: sa
+        connection-url: jdbc:h2:file:/home/wsiqueir/projects/dashbuilder-data/world/world_data
+        user-name: 
+        password: 
         jndi-name: java:jboss/datasources/WorldDS
     jdbc-drivers:
       myh2:
