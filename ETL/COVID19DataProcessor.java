@@ -1,5 +1,6 @@
-package org.fxapps.data;
-
+//usr/bin/env jbang "$0" "$@" ; exit $?
+//DEPS org.apache.commons:commons-csv:1.8
+//JAVA 11
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -53,7 +54,7 @@ public class COVID19DataProcessor {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Starting transformation...");
-        var paths = new HashMap<Path, Path>();
+        var paths = new HashMap<Path, Path>();        
 
         ORIGIN_DEST.forEach((o, d) -> paths.put(Paths.get(ORIGIN_BASE_PATH, o),
                                                 Paths.get(DEST_BASE_PATH, d)));
