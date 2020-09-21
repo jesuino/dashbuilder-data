@@ -30,12 +30,12 @@ public class BuildPokemonImagesCSV {
 
     private static final String BASE64_PREFIX = "data:image/png;base64,";
 
-
     // Columns
     private static final String CL_NUMBER = "pokedex_number";
     private static final String CL_NAME = "name";
-    private static final String CL_SVG = "pokemon_svg";
-    private static final List<String> OUT_COLUMNS = List.of(CL_NUMBER, CL_NAME, CL_SVG);
+    private static final String CL_SVG = "pokemon_img";
+    private static final String CL_CLASSFICATION = "classfication";
+    private static final List<String> OUT_COLUMNS = List.of(CL_NUMBER, CL_NAME, CL_SVG, CL_CLASSFICATION);
 
     public static void main(String... args) throws Exception {
         System.out.println("Starting generating CSV with Pokemon images");
@@ -43,7 +43,6 @@ public class BuildPokemonImagesCSV {
         var parser = CSVParser.parse(pokemonCSVFile, CHARSET, CSV_TYPE);
         var records = parser.getRecords();
         var pokemonImagesCSV = Paths.get(POKEMON_IMGS_CSV);
-
 
         Files.delete(pokemonImagesCSV);
         Files.createFile(pokemonImagesCSV);
@@ -55,12 +54,15 @@ public class BuildPokemonImagesCSV {
         for (CSVRecord pkRecord : records) {
             var number = pkRecord.get(CL_NUMBER);
             var name = pkRecord.get(CL_NAME);
+            var classification = pkRecord.get(CL_CLASSFICATION);
             var imgFile = Paths.get(POKEMON_IMG_DIR, number + ".png");
+            var imgData = "";
             if (imgFile.toFile().exists()) {
                 var imgContent = Files.readAllBytes(imgFile);
-                var base64 = BASE64_PREFIX.concat(Base64.getEncoder().encodeToString(imgContent));
-                printTo(outPrinter, List.of(number, name, base64));            
+                imgData = BASE64_PREFIX.concat(Base64.getEncoder().encodeToString(imgContent));
+
             }
+            printTo(outPrinter, List.of(number, name, imgData, classification));
         }
         outPrinter.close();
         System.out.println("Finishing");
@@ -72,5 +74,5 @@ public class BuildPokemonImagesCSV {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }         
+    }
 }
