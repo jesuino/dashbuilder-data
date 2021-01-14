@@ -1,0 +1,16 @@
+{
+  "uuid": "PUBLIC_jbpmProcessInstancesWithVariables",
+  "name": "PUBLIC jbpmProcessInstancesWithVariables",
+  "provider": "REMOTE",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dataSource": "${org.kie.server.persistence.ds}",
+  "dbSQL": "select vil.processInstanceId, vil.processId, vil.id, vil.variableId, vil.value from VariableInstanceLog vil left join VariableInstanceLog vil2 on vil.processInstanceId = vil2.processInstanceId and vil.variableId = vil2.variableId and vil.id < vil2.id where vil2.id is null",
+  "serverTemplateId": "sample-server",
+  "queryTarget": "CUSTOM",
+  "allColumns": true
+}
