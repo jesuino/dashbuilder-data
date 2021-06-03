@@ -1,0 +1,38 @@
+{
+  "uuid": "TaskVariablesValues",
+  "name": "Task Variables Values",
+  "provider": "REMOTE",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dataSource": "${org.kie.server.persistence.ds}",
+  "dbSQL": "select \n        t.processInstanceId as ProcessInstanceId,\n       v.name as VariableName,\n        v.value as VariableValue, \n        t.name as TaskName,\n        t.actualOwner as TaskOwner\nfrom TaskVariableImpl v \ninner join AuditTaskImpl t \n\ton t.taskId = v.taskId\n\n",
+  "queryTarget": "CUSTOM",
+  "serverTemplateId": "sample-server",
+  "allColumns": false,
+  "columns": [
+    {
+      "id": "PROCESSINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "VARIABLENAME",
+      "type": "label"
+    },
+    {
+      "id": "VARIABLEVALUE",
+      "type": "label"
+    },
+    {
+      "id": "TASKOWNER",
+      "type": "label"
+    },
+    {
+      "id": "TASKNAME",
+      "type": "label"
+    }
+  ]
+}
