@@ -2,11 +2,13 @@ package org.dashbuilder;
 
 import java.util.Map;
 
+import javax.enterprise.context.ApplicationScoped;
 import org.dashbuilder.dataset.ColumnType;
 import org.dashbuilder.dataset.DataSet;
 import org.dashbuilder.dataset.DataSetFactory;
 import org.dashbuilder.dataset.DataSetGenerator;
 
+@ApplicationScoped
 public class SocialNetworkDataGenerator implements DataSetGenerator {
 
     public DataSet buildDataSet(Map<String, String> params) {

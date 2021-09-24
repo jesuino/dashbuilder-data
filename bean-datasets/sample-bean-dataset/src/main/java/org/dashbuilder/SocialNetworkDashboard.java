@@ -1,5 +1,9 @@
 package org.dashbuilder;
 
+import static org.dashbuilder.dsl.factory.page.PageFactory.columnBuilder;
+import static org.dashbuilder.dsl.factory.page.PageFactory.row;
+
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.dashbuilder.dataset.def.DataSetDefFactory;
@@ -12,17 +16,15 @@ import org.dashbuilder.dsl.model.Dashboard;
 import org.dashbuilder.dsl.serialization.DashboardExporter;
 import org.dashbuilder.dsl.serialization.DashboardExporter.ExportType;
 
-import static org.dashbuilder.dsl.factory.page.PageFactory.columnBuilder;
-import static org.dashbuilder.dsl.factory.page.PageFactory.row;
-
 public class SocialNetworkDashboard {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        var basePath = args.length > 0 ? args[0] : ".";
         var dashboard = buildDashboard();
-
+        var outPath = Paths.get(basePath).resolve("social-networks-dashboard.zip");
         DashboardExporter.get()
                          .export(dashboard,
-                                 "/tmp/dashbuilder/models/social_networks.zip",
+                                 outPath.toString(),
                                  ExportType.ZIP);
     }
 
