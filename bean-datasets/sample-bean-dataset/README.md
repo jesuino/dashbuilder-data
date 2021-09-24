@@ -26,3 +26,4 @@ Then with a web browser go to `localhost:8080` and upload `dashboard.zip` or set
 java -Ddashbuilder.runtime.import=/path/to/social-networks-dashboard.zip -cp 'target/sample-bean-dataset-0.0.1-SNAPSHOT.jar:/path/to/dashbuilder-runtime-app.jar' io.quarkus.runner.GeneratedMain 
 ```
 
+![image](https://user-images.githubusercontent.com/359820/134712900-31216b7b-eb28-413e-bb4c-5b4b8f7d7ad7.png)
