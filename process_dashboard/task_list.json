@@ -9,7 +9,7 @@
     { "id": "actualOwner", "type": "TEXT" },
     { "id": "Status", "type": "LABEL" }
   ],
-  "data": [
+  "values": [
     [
       "Process name 1",
       1,
