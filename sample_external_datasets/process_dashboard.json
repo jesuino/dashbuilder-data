@@ -1,0 +1,23 @@
+{
+  "columns": [
+    { "id": "PROCESSNAME", "type": "LABEL" },
+    { "id": "PROCESSINSTANCEID", "type": "NUMBER" },
+    { "id": "PROCESSTYPE", "type": "NUMBER" },
+    { "id": "STATUS", "type": "NUMBER" },
+    { "id": "SLACOMPLIANCE", "type": "NUMBER" },
+    { "id": "USER_IDENTITY", "type": "LABEL" }
+  ],
+  "values": [
+    ["p1", "1", "1", "1", "1", "mark"],
+    ["p2", "2", "1", "2", "1", "porcelli"],
+    ["p2", "3", "1", "1", "0", "eder"],
+    ["p3", "4", "1", "2", "1", "eder"],
+    ["p3", "5", "1", "1", "0", "eder"],
+    ["p2", "6", "1", "0", "0", "porcelli"],
+    ["p1", "7", "1", "3", "3", "mark"],
+    ["p1", "8", "1", "1", "0", "mark"],
+    ["p2", "9", "1", "1", "2", "porcelli"],
+    ["p1", "10", "1", "0", "1", "eder"],
+    ["p3", "11", "1", "1", "0", "tiago"]
+  ]
+}
