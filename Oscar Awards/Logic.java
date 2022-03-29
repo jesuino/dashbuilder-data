@@ -55,7 +55,7 @@ public class Logic {
             ans=ans.substring(0,ans.length()-1);
             ans+="]";
             ans=ans.replace("True","true");
-            ans=ans.replace("False","true");
+            ans=ans.replace("False","false");
             fr.close();
             System.out.println(ans);
             BufferedWriter writer = new BufferedWriter(new FileWriter("ans.json"));
