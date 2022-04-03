@@ -1,21 +1,27 @@
-import java.nio.file.Files;
-import java.nio.file.Paths;
-public class Logic {
+import java.io.*;
+public class OldLogic {
     public static void main(String args[])
     {
         try  
         {  
-            String path="/home/nikhildewoolkar/Desktop/RedHat_Work/CSV_TO_JSON/the_oscar_award.csv";
-            StringBuffer ans=new StringBuffer("[");
-            Files.lines(Paths.get(path)).forEach(line -> {
-                StringBuffer s=new StringBuffer("[\"");
+            // String path="/home/nikhildewoolkar/Desktop/RedHat_Work/CSV_TO_JSON/the_oscar_award.csv";
+            File file=new File("the_oscar_award.csv");//path
+            FileReader fr=new FileReader(file);
+            BufferedReader br=new BufferedReader(fr);
+            String line;
+            String ans="[";
+            System.out.println("year_film,year_ceremony,ceremony,category,name,film,winner");
+            line=br.readLine();
+            while((line=br.readLine())!=null)  
+            {  
+                String s="[\"";
                 int commacount=0;
                 int i=0;
                 while(i<line.length())
                 {
                     if(line.charAt(i)!=',' && line.charAt(i)!='\"')
                     {
-                        s.append(line.charAt(i));
+                        s+=line.charAt(i);
                     }
                     else if(line.length()>i+1 && line.charAt(i)=='\"')
                     {
@@ -32,27 +38,29 @@ public class Logic {
                             {
                                 break;
                             }
-                            s.append(line.charAt(i));
+                            s+=line.charAt(i);
                             i++;
                         }
                         commacount=0;
                     }
                     else if(line.charAt(i)==',')
                     {
-                        s.append("\""+","+"\"");
+                        s+="\""+","+"\"";
                     }
                     i++;
                 }
-                s.append("\"]");
-                ans.append(s+(","));
-            });
-            String ans1=ans.toString();
-            ans1=ans1.substring(0,ans.length()-1);
-            ans1+="]";
-            ans1=ans1.replace("True","true");
-            ans1=ans1.replace("False","false");
+                s+="\"]";
+                ans+=s+",";
+            }
+            ans=ans.substring(0,ans.length()-1);
+            ans+="]";
+            ans=ans.replace("True","true");
+            ans=ans.replace("False","false");
+            fr.close();
             System.out.println(ans);
-            Files.writeString(Paths.get("ans.json"), ans1);
+            BufferedWriter writer = new BufferedWriter(new FileWriter("ans.json"));
+            writer.write(ans);
+            writer.close();
         }  
         catch(Exception e)  
         {  
@@ -60,4 +68,3 @@ public class Logic {
         }
     }
 }
-
