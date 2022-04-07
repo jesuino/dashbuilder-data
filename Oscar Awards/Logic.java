@@ -5,9 +5,12 @@ public class Logic {
     {
         try  
         {  
-            String path="/home/nikhildewoolkar/Desktop/RedHat_Work/CSV_TO_JSON/the_oscar_award.scsv";
+            String path="/home/nikhildewoolkar/Desktop/RedHat_Work/CSV_TO_JSON/the_oscar_award.csv";
             StringBuffer ans=new StringBuffer("[");
+            StringBuffer k=new StringBuffer("1");
             Files.lines(Paths.get(path)).forEach(line -> {
+                if(!k.toString().equals("1"))
+                {
                 StringBuffer s=new StringBuffer("[\"");
                 int commacount=0;
                 int i=0;
@@ -57,7 +60,10 @@ public class Logic {
                     z++;
                 }
                 ans.append(s1+(","));
-            });
+            }
+            k.setLength(0);
+            k.append("0");  
+        });
             String ans1=ans.toString();
             ans1=ans1.substring(0,ans.length()-1);
             ans1+="]";
