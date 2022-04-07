@@ -5,7 +5,7 @@ public class Logic {
     {
         try  
         {  
-            String path="/home/nikhildewoolkar/Desktop/RedHat_Work/CSV_TO_JSON/the_oscar_award.csv";
+            String path="/home/nikhildewoolkar/Desktop/RedHat_Work/CSV_TO_JSON/the_oscar_award.scsv";
             StringBuffer ans=new StringBuffer("[");
             Files.lines(Paths.get(path)).forEach(line -> {
                 StringBuffer s=new StringBuffer("[\"");
@@ -44,14 +44,26 @@ public class Logic {
                     i++;
                 }
                 s.append("\"]");
-                ans.append(s+(","));
+                // ["1930","1931","4","CINEMATOGRAPHY","Barney ""Chick"" McGill","Svengali","false"]
+                String s1=s.toString();
+                int z=0;
+                while(z+2<s1.length())
+                {
+                    // System.out.println(s1.substring(z,z+2)+" "+s1+" "+s1.charAt(z+1));System.out.println(s1);
+                    if(s1.substring(z,z+2).equals("\"\"") && s1.charAt(z+2)!=',')
+                    {
+                        s1 = s1.substring(0, z) + "\\\"" + s1.substring(z + 2);
+                    }
+                    z++;
+                }
+                ans.append(s1+(","));
             });
             String ans1=ans.toString();
             ans1=ans1.substring(0,ans.length()-1);
             ans1+="]";
             ans1=ans1.replace("True","true");
             ans1=ans1.replace("False","false");
-            System.out.println(ans);
+            // System.out.println(ans);
             Files.writeString(Paths.get("ans.json"), ans1);
         }  
         catch(Exception e)  
