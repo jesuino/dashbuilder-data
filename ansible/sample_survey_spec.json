@@ -1,0 +1,30 @@
+{
+    "name": "",
+    "description": "",
+    "spec": [
+        {
+            "question_name": "Greeting",
+            "question_description": "Let us know what greeting you would like to use",
+            "required": true,
+            "type": "text",
+            "variable": "greeting",
+            "min": 0,
+            "max": 1024,
+            "default": "",
+            "choices": "",
+            "new_question": true
+        },
+        {
+            "question_name": "What is your name?",
+            "question_description": "Provide your name so I can greet you!",
+            "required": true,
+            "type": "text",
+            "variable": "guestName",
+            "min": 0,
+            "max": 1024,
+            "default": "Universe",
+            "choices": "",
+            "new_question": true
+        }
+    ]
+}
